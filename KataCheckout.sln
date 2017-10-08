@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26724.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KataCheckout", "KataCheckout\KataCheckout.csproj", "{A2454B7A-6EB5-40E9-8866-026090CE8B04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2454B7A-6EB5-40E9-8866-026090CE8B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2454B7A-6EB5-40E9-8866-026090CE8B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2454B7A-6EB5-40E9-8866-026090CE8B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2454B7A-6EB5-40E9-8866-026090CE8B04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {13E9A3F9-71B1-4531-A4A6-F19B46B925AB}
+	EndGlobalSection
+EndGlobal
