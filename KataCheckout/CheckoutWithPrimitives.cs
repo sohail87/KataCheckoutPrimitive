@@ -17,11 +17,11 @@ namespace KataCheckout
             {'D', 15},
         };
         private readonly List<char> _basket = new List<char>();
-        private readonly List<Tuple<char, int, int>> _discounts;
+        private readonly List<Tuple<char, int, int>> _discountRules;
 
-        public CheckoutWithPrimitives(List<Tuple<char, int, int>> discounts)
+        public CheckoutWithPrimitives(List<Tuple<char, int, int>> discountRules)
         {
-            _discounts = discounts;
+            _discountRules = discountRules;
         }
 
         public void Scan(char sku)
@@ -33,18 +33,27 @@ namespace KataCheckout
         {
             _runningTotal = _basket.Aggregate(0, (previousMoney, currentProduct) => previousMoney + _prices.TryGetValueOrDefault(currentProduct));
 
-            _discounts.ForEach(discount => ApplyDiscount(discount.Item1, discount.Item2, discount.Item3));
+            _discountRules.ForEach(discount => ApplyDiscountToTotal(discount));
 
             return _runningTotal;
         }
 
-        private void ApplyDiscount(char product, int discountableQuantity, int discountAmount)
+        private void ApplyDiscountToTotal(Tuple<char, int, int> discountRule)
+        {
+            var instances = GetDiscountRuleInstancesInBasket(discountRule.Item1, discountRule.Item2, discountRule.Item3);
+            instances.ForEach(discount => _runningTotal += discount);
+        }
+
+        private List<int> GetDiscountRuleInstancesInBasket(char product, int discountableQuantity, int discountAmount)
         {
             var productsCount = _basket.Count(x => x == product);
-            for (var instances = productsCount / discountableQuantity; instances > 0; instances--)
+            var instances = productsCount / discountableQuantity;
+            var basketDiscounts = new List<int>();
+            for (var i = instances; i > 0; i--)
             {
-                _runningTotal += discountAmount;
+                basketDiscounts.Add(discountAmount);
             }
+            return basketDiscounts;
         }
     }
 
